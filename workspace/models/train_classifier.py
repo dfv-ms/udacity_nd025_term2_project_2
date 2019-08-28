@@ -125,6 +125,11 @@ def build_model():
     return cv
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    Test model against test-data and print classification_report containing
+    precission, recall and f1-score for each category.
+    """
+    
     Y_pred = model.predict(X_test)
     print(classification_report(Y_test, Y_pred))
 
