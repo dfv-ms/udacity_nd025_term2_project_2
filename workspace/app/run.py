@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
+from plotly.graph_objs import Bar, Histogram
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 
@@ -29,6 +29,9 @@ def tokenize(text):
 engine = create_engine('sqlite:///../data/DisasterResponse.db')
 df = pd.read_sql_table('messages', engine)
 
+# The column 'child_alone' doesn't appear in any message. So I dropped it
+# during the learning phase.
+# So let's drop it here again.
 df.drop(columns=['child_alone'], inplace=True)
 
 # load model
@@ -44,6 +47,11 @@ def index():
     # TODO: Below is an example - modify to extract data for your own visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
+
+    categories_names = list(df.iloc[:, 4:].columns.values)
+    categories_counts = df.iloc[:, 4:].sum(axis=0).values
+
+    categories_per_message = df.iloc[:, 4:].sum(axis=1).values
 
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
@@ -63,6 +71,41 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=categories_names,
+                    y=categories_counts
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Category"
+                }
+            }
+        },
+        {
+            'data': [
+                Histogram(
+                    x=categories_per_message
+                )
+            ],
+
+            'layout': {
+                'title': 'No. of Categories per Message',
+                'yaxis': {
+                    'title': "No. Messages"
+                },
+                'xaxis': {
+                    'title': "No. Categories"
                 }
             }
         }
