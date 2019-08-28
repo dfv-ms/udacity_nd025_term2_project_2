@@ -128,10 +128,17 @@ def evaluate_model(model, X_test, Y_test, category_names):
     """
     Test model against test-data and print classification_report containing
     precission, recall and f1-score for each category.
+
+    Parameters:
+    -----------
+    model: the model to be avaluated
+    X_test: input for testing
+    Y_test: true_values
+    category_names: list of names of categories
     """
-    
+
     Y_pred = model.predict(X_test)
-    print(classification_report(Y_test, Y_pred))
+    print(classification_report(Y_test, Y_pred, target_names=category_names))
 
 def save_model(model, model_filepath):
     """
