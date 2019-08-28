@@ -116,8 +116,7 @@ def build_model():
     ])
 
     parameters = {
-        # 'mcfl__estimator__kernel' : ['linear', 'rbf'],
-        'mcfl__estimator__kernel' : ['linear'],
+        'mcfl__estimator__kernel' : ['linear', 'rbf'],
     }
 
     cv = GridSearchCV(pipeline, param_grid=parameters, verbose=10, cv=2, \
