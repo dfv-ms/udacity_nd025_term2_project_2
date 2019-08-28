@@ -78,9 +78,9 @@ mentioned above.
 ## Libraries
 
 The following python packages are used:
-* pandas
-* sqlalchemy
-* ntlk
-* sklearn
-* matplotlib
-* seaborn
+* pandas (0.24.2)
+* sqlalchemy (1.3.7)
+* ntlk (3.4.4)
+* sklearn (0.20.3)
+* matplotlib (3.0.3)
+* seaborn (0.9.0)
