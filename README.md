@@ -55,7 +55,9 @@ So I don't have to loop over the categories. Instead I can print the results in
 one step.
 
 Because I want to use more than one processor core I had to move
+
 stop_words = stopwords.words('english')
+
 out of the tokenize function.  (see code)
 
 ## Web-app
@@ -70,7 +72,7 @@ It shows three plotly charts:
 
 ## Jupyter notebooks
 
-There two jupyter notebooks used to analyse the data and prepare the scripts
+There are two jupyter notebooks used to analyse the data and prepare the scripts
 mentioned above.
 
 ## Libraries
