@@ -19,9 +19,10 @@ The task was to predict the associated categories by the message.
 * data contains the csv-files
 * jupyter-notebooks contains the jupyter notebooks used for data exploration and setting up the pipelines
 * workplace contains the files containing the project itself
-** app: The flask app
-** data: The ETL-pipeline
-** models: The ML-pipeline
+
+* app: The flask app
+* data: The ETL-pipeline
+* models: The ML-pipeline
 
 ## ETL-Pipeline
 
